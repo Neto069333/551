@@ -1,25 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package excepcion6;
-
-/**
- *
- * @author ernes
- */
 public class Excepcion6 {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static class NumerosNullException extends Exception {
+        public NumerosNullException(String mensaje) {
+            super(mensaje);
+        }
+    }
+
     public static void main(String[] args) {
         Integer numero1 = null;
         Integer numero2 = 5;
-        
-        Integer resultado = numero1 + numero2; 
-        
-        System.out.println("El resultado de la suma es: " + resultado);
+
+        try {
+            if (numero1 == null || numero2 == null) {
+                throw new NumerosNullException("Error: Uno o ambos números son nulos.");
+            }
+
+            Integer resultado = numero1 + numero2;
+
+            System.out.println("El resultado de la suma es: " + resultado);
+        } catch (NumerosNullException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
